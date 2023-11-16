@@ -13,16 +13,13 @@ import { User } from 'src/auth/entities/user.entity';
 @Injectable()
 export class UserRoleGuard implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
-  canActivate(
-    context: ExecutionContext,
-  ): boolean | Promise<boolean> | Observable<boolean> {
+  canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
     const validRoles: string[] = this.reflector.get(
       META_ROLES,
       context.getHandler(),
     );
 
-    if (!validRoles) return true;
-    if (validRoles.length === 0) return true;
+    if (!validRoles || validRoles.length === 0) return true;
 
     const req = context.switchToHttp().getRequest();
     const user = req.user as User;
@@ -34,7 +31,7 @@ export class UserRoleGuard implements CanActivate {
       }
     }
     throw new ForbiddenException(
-      `User ${user.fullName} need a valid role: [${validRoles}]`,
+      `User ${user.fullName} does not have a valid role: [${validRoles}]`,
     );
   }
 }

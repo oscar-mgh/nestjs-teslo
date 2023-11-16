@@ -29,26 +29,26 @@ interface SeedData {
 export const initialData: SeedData = {
   users: [
     {
-      email: 'test1@gmail.com',
-      fullName: 'test one',
+      email: 'test@gmail.com',
+      fullName: 'common user',
       password: '$2b$10$AjKryVpTbcBHaxj8yBsUhuv2W8aOB872R48B.7cRyq0RHd1BQVr/y',
       roles: ['user'],
     },
     {
-      email: 'test2@gmail.com',
-      fullName: 'test two',
-      password: '$2b$10$AjKryVpTbcBHaxj8yBsUhuv2W8aOB872R48B.7cRyq0RHd1BQVr/y',
-      roles: ['admin'],
-    },
-    {
-      email: 'test3@gmail.com',
-      fullName: 'test three',
+      email: 'test_su@gmail.com',
+      fullName: 'super user',
       password: '$2b$10$AjKryVpTbcBHaxj8yBsUhuv2W8aOB872R48B.7cRyq0RHd1BQVr/y',
       roles: ['super-user'],
     },
     {
-      email: 'test4@gmail.com',
-      fullName: 'test four',
+      email: 'test_ad@gmail.com',
+      fullName: 'administrator',
+      password: '$2b$10$AjKryVpTbcBHaxj8yBsUhuv2W8aOB872R48B.7cRyq0RHd1BQVr/y',
+      roles: ['admin'],
+    },
+    {
+      email: 'test_roles@gmail.com',
+      fullName: '3 roles together',
       password: '$2b$10$AjKryVpTbcBHaxj8yBsUhuv2W8aOB872R48B.7cRyq0RHd1BQVr/y',
       roles: ['user', 'admin', 'super-user'],
     },

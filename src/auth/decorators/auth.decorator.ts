@@ -4,13 +4,9 @@ import { AuthGuard } from '@nestjs/passport';
 import { UserRoleGuard } from '../guards/user-role/user-role.guard';
 import { RoleProtected } from './role-protected.decorator';
 
-export function Auth(...roles: ValidRoles[]) {
-  const theRoles = [];
-  if (roles.length !== 0) {
-    theRoles.push(ValidRoles.user);
-  }
+export const Auth = (...roles: ValidRoles[]) => {
   return applyDecorators(
-    RoleProtected(...theRoles),
+    RoleProtected(...roles),
     UseGuards(AuthGuard(), UserRoleGuard),
   );
-}
+};

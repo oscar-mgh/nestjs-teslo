@@ -16,7 +16,7 @@ export class SeedService {
     await this.deleteTables();
     const adminUsers = await this.insertUsers();
     await this.insertProducts(adminUsers);
-    return 'Seed executed!';
+    return 'Seed executed successfully';
   }
 
   private async deleteTables() {
@@ -27,11 +27,11 @@ export class SeedService {
 
   private async insertUsers() {
     const seedUsers = initialData.users;
-    const users: User[] = [];
     seedUsers.forEach((user) => {
-      users.push(this.userRepository.create(user));
+      this.userRepository.create(user);
     });
     const dbUsers = await this.userRepository.save(seedUsers);
+    console.log(dbUsers)
     return dbUsers[0];
   }
 
