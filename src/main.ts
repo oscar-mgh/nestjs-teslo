@@ -17,6 +17,7 @@ async function bootstrap() {
   app.enableCors({ origin: '*' });
 
   const config = new DocumentBuilder()
+    .addBearerAuth()
     .setTitle('Teslo - REST API')
     .setDescription('Teslo shop')
     .setVersion('1.0')
